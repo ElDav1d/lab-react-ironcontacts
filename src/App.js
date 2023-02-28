@@ -6,11 +6,20 @@ function App() {
   const initialContacts = data.slice(0, 5);
   const [contacts, setContacts] = useState(initialContacts);
 
-  console.log(contacts);
+  const getRandomContact = () => {
+    const randomIndex = Math.floor(Math.random() * data.length);
+
+    return data[randomIndex];
+  };
+
+  const handleAddMore = () => {
+    setContacts([getRandomContact(), ...contacts]);
+  };
 
   return (
     <div className="App">
-      <h1>hello world</h1>
+      <h1>MY CONTACTS</h1>
+      <button onClick={handleAddMore}>ADD MORE</button>
       <table>
         <tr>
           <th>Picture</th>
