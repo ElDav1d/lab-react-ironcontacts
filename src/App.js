@@ -50,6 +50,12 @@ function App() {
     setContacts(sortedContacts);
   };
 
+  const handleDelete = (index) => {
+    const newContacts = [...contacts];
+    newContacts.splice(index, 1);
+    setContacts(newContacts);
+  };
+
   return (
     <div className="App">
       <h1>MY CONTACTS</h1>
@@ -68,10 +74,11 @@ function App() {
             <th>Popularity</th>
             <th>Won Emmy</th>
             <th>Won Oscar</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {contacts.map((contact) => (
+          {contacts.map((contact, index) => (
             <tr key={contact.id}>
               <td>
                 <img
@@ -83,6 +90,15 @@ function App() {
               <td>{contact.popularity}</td>
               <td>{contact.wonEmmy && "🏆"}</td>
               <td>{contact.wonOscar && "🏆"}</td>
+              <td>
+                <button
+                  onClick={() => {
+                    handleDelete(index);
+                  }}
+                >
+                  DELETE
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
