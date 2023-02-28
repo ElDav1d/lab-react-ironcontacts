@@ -16,9 +16,11 @@ function App() {
           <th>Picture</th>
           <th>Name</th>
           <th>Popularity</th>
+          <th>Won Emmy</th>
+          <th>Won Oscar</th>
         </tr>
         {contacts.map((contact) => (
-          <tr>
+          <tr key={contact.id}>
             <td>
               <img
                 src={contact.pictureUrl}
@@ -27,6 +29,8 @@ function App() {
             </td>
             <td>{contact.name}</td>
             <td>{contact.popularity}</td>
+            <td>{contact.wonEmmy && "🏆"}</td>
+            <td>{contact.wonOscar && "🏆"}</td>
           </tr>
         ))}
       </table>
